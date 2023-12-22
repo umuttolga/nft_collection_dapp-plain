@@ -1,15 +1,12 @@
 // React Imports
 import React from 'react'
 import MintItem from './MintItem'
-import { getAllNtfs } from './ContractCalls/ContractCalls'
 // Style Imports
-import {Box, Button, Grid} from '@chakra-ui/react'
+import {Box, Button, Grid, Text} from '@chakra-ui/react'
 import Spinner from '../Utils/Loader'
 
 const MintScreen = () => {
-  // const {isLoading} = getAllNtfs()
 
-  // Get isLoading From Contract Call
 const isLoading = true
   return (
     <Box margin={30}>
@@ -20,7 +17,6 @@ const isLoading = true
        </Grid> 
       
     }
-      
     </Box>
   )
 }

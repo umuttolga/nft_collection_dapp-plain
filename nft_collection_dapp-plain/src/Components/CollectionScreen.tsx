@@ -1,9 +1,9 @@
 // React Imports
 import React from 'react'
 import CollectionItem from './CollectionItem'
+
 // Style Imports
-import {Box ,Grid} from '@chakra-ui/react'
-import Spinner from '../Utils/Loader'
+import {Box} from '@chakra-ui/react'
 
 
 const CollectionScreen = () => {
@@ -13,16 +13,7 @@ const isLoading = true
 
 return (
     <Box margin={30} >
-      {
-        isLoading ? 
-        (
-          <Grid justifyItems="center" mt="20%">
-        <Spinner />
-       </Grid> 
-        ) :
-
       <CollectionItem/>
-      }
     </Box>
   )
 }

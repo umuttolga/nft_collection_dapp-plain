@@ -2,31 +2,36 @@
 import React from 'react'
 
 // Style Imports
-import { Grid, GridItem, Image, Text } from '@chakra-ui/react'
-import Loader from "../Utils/Loader"
-const DUMMY_NFT_COLLECTION: any = []
+import { Grid, Text } from '@chakra-ui/react'
+import { useMoveCalls } from './Move Calls/MoveCalls'
+import { SuiClient, getFullnodeUrl } from '@mysten/sui.js/client'
 
 const CollectionItem = () => {
+ const {getCards, handleCreateDeveloperCard, updateCardDescritonFunction, deactivateCard, devhub} = useMoveCalls()
+ const client = new SuiClient({url: getFullnodeUrl('devnet')})
+ const obj = client?.getObject({
+  id: "0x046aa8eb2e7e2d26ea876634e2bf1c0cfa2c9908d0ee14309c62e949656f8adf",
+  options:{showContent: true}
+ }).then(response => {
+  console.log(response.data?.content.fields.cards.fields)
+ });
 
-// Get Your Owned NFTs and Replace DUMMY_NFT_COLLECTION with your collection  
+// const obj2 = client?.getObject({
+// 	id: '0x046aa8eb2e7e2d26ea876634e2bf1c0cfa2c9908d0ee14309c62e949656f8adf',
+// }).then(response => {
+//   console.warn(response)
+// })
 
-  
-
+// const arda = async() => {
+//   await getCards(2)
+// }
+// const tolga = arda()
+// console.log(obj)
+//  console.log(obj)
 
     return (
         <Grid fontFamily="fantasy"  justifyItems="center" templateColumns='repeat(3, 1fr)' alignItems="center" gap={10} p={4}>
-        {
-        DUMMY_NFT_COLLECTION?.map((element: any, index: any) => (
-        <GridItem bgImage={"https://images.pexels.com/photos/3435272/pexels-photo-3435272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} borderRadius={"3xl"} shadow={"2xl"} p={8} key={index}>
-            <Grid gap={2} >
-            <Image justifySelf="center" borderRadius={"md"} border={"2px"} borderColor="white" src={element.metadata.image} boxSize={200} alt='Nft img'/>
-          <Text color="wheat" textAlign={"center"} fontSize="xl" fontWeight="bold" fontFamily="Croissant one">
-          NTF Name  
-          </Text>
-          <Text fontSize="3xl" textAlign="center" color="whatsapp.100">{element.metadata.name}</Text>
-            </Grid>
-          
-        </GridItem>))}
+      <Text onClick={() => getCards(2)} >TEST</Text>
     </Grid>
   )
 }
